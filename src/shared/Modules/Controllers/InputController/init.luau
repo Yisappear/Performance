@@ -17,9 +17,7 @@ InputController.__index = InputController;
 
 function InputController.new()
     local self = setmetatable({}, InputController)
-
-
-    self:bindInputs()
+    self:bindInputs();
     return self;
 end
 

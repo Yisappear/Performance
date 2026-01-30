@@ -12,8 +12,8 @@ Replica.OnNew(token, function(replica)
     print(replica.Data);
 
     replica:OnChange(function(action, path, oldValue, newValue)
-    
-        print(replica.Data);
+
+        print(newValue);
 
     end)
 end);

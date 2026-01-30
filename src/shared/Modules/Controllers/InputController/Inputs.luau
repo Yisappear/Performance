@@ -6,7 +6,7 @@ return {
 
     KeyCode = {
         ["F"] = {
-            fn = function()
+            fn = function(actionName: string, inputState: Enum.UserInputState, inputObject)
 
             end,
         }
@@ -14,7 +14,10 @@ return {
 
     UserInputType = {
         ["MouseButton1"] = {
-            fn = function()
+            fn = function(actionName: string, inputState: Enum.UserInputState, inputObject)
+                if inputState == Enum.UserInputState.Begin then return end
+
+                print("HELLO!");
 
             end,
         }

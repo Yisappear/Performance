@@ -15,7 +15,7 @@ local PlayerData = require(ReplicatedStorage:FindFirstChild("Modules"):FindFirst
 local Replica = require(ReplicatedStorage:FindFirstChild("Modules"):FindFirstChild("Libs"):FindFirstChild("Replica"):FindFirstChild("ReplicaServer"));
 
 -- Private variables
-local Structs: {[Player]: any} = {}; -- players cache
+local Structs: {[Player]: any} = {}; -- structs cache
 local Replicas: {[Player]: Replica.Replica} = {}; -- replica cache
 
 -- Class:
@@ -29,7 +29,7 @@ function PlayerStruct.new(player: Player)
     -- self.data = PlayerData.new(player);
 
     -- Replica setup:
-    local token = Replica.Token(`user_{player.UserId}`);
+    local token = Replica.Token(`user_{player.UserId}`); -- <- user can be changed for replica, inventory_{player.UserId}, leaderstats_{player_UserId}
     local replicaData = {{ id = 2, amount = 5 }}
     local replica = Replica.New({
         Token = token,
@@ -39,7 +39,6 @@ function PlayerStruct.new(player: Player)
     Replicas[player] = replica;
 
     if Replica.ReadyPlayers[player] then
-        print("Subscribe in new function");
         replica:Subscribe(player);
     end
 
@@ -78,9 +77,7 @@ Players.PlayerRemoving:Connect(function(player) PlayerStruct.remove(player); end
 Replica.NewReadyPlayer:Connect(function(player)
     if Replicas[player] then
         Replicas[player]:Subscribe(player);
-        print("SUBSCRIBING IN NewReadyPlayer function");
     end
 end)
-
 
 return PlayerStruct;
