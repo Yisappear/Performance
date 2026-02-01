@@ -19,7 +19,7 @@ function BasicSword.attack(ownerModel: Model): {Model}
 
     local HitboxPosition = (ownerCF.Position + (ownerCF.LookVector * HitboxOffsetPosition))
     local hitbox = CreateHibox(HitboxPosition, HiboxSize);
-    task.delay(3, function()
+    task.delay(2, function()
         hitbox:Destroy();
     end)
 

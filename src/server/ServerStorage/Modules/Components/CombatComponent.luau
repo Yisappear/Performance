@@ -83,7 +83,7 @@ function CombatComponent:onAttack()
         local damage: number;
         local blockState = class.blockState;
         if blockState then
-            damage = weaponConfig.damage * 80 / 100;
+            damage = weaponConfig.damage * 0.2;
         else
             damage = weaponConfig.damage;
             class:ragdol();

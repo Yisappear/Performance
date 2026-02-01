@@ -7,7 +7,7 @@ return function(pos: Vector3, size: Vector3): BasePart
     part.CanTouch = false;
     part.CanQuery = false;
     part.Color = Color3.fromRGB(255, 0, 0)
-    part.Transparency = 0.8;
+    part.Transparency = 0.82;
     part.Position = pos;
     part.Size = size;
     return part;
